@@ -26,6 +26,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 					backgroundColor: "black",
 					borderColor: "orange",
 					borderWidth: 1.5,
+					tension: 0.4
 				}],
 
 			}} options={{

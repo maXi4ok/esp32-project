@@ -30,7 +30,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // time config
 const char *ntpServer = "pool.ntp.org";
-const long gmtOffset_sec = 7200;
+const long gmtOffset_sec = 0;
 
 // time
 WiFiUDP ntpUPD;
@@ -58,7 +58,7 @@ void setup()
 	display.clearDisplay();
 	display.display();
 
-	WiFi.begin(homeSsid, homePassword);
+	WiFi.begin(mySsid, myPassword);
 
 	while (WiFi.status() != WL_CONNECTED)
 	{
@@ -93,7 +93,7 @@ void loop()
 		display.print("Humidity:");
 		display.println(DHT.humidity);
 		display.print("Time:");
-		display.print(timeClient.getHours());
+		display.print(timeClient.getHours() + 2);
 		display.print(":");
 		display.println((timeClient.getMinutes() < 10 ? "0" : "") + String(timeClient.getMinutes()));
 		display.display();
@@ -110,7 +110,7 @@ void loop()
 
 		String jsonPayload = "{\"temp\":" + String(DHT.temperature) +
 							 ", \"humid\":" + String(DHT.humidity) +
-							 ", \"time\":" + timeClient.getEpochTime() + "}";
+							 ", \"time\":" + (timeClient.getEpochTime() * 1000 - 42600000) + "}";
 		int responseCode = http.POST(jsonPayload);
 		if (responseCode > 0)
 		{
