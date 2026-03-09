@@ -25,8 +25,9 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 					data: data.map(item => item.temp),
 					backgroundColor: "black",
 					borderColor: "orange",
-					borderWidth: 1.5
+					borderWidth: 1.5,
 				}],
+
 			}} options={{
 				plugins: {
 					title: {

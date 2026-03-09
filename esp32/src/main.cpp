@@ -108,7 +108,9 @@ void loop()
 		http.begin(currentServerUrl);
 		http.addHeader("Content-Type", "application/json");
 
-		String jsonPayload = "{\"temp\":" + String(DHT.temperature) + ", \"humid\":" + String(DHT.humidity) + ", \"time\":\"" + timeClient.getFormattedTime() + "\"}";
+		String jsonPayload = "{\"temp\":" + String(DHT.temperature) +
+							 ", \"humid\":" + String(DHT.humidity) +
+							 ", \"time\":" + timeClient.getEpochTime() + "}";
 		int responseCode = http.POST(jsonPayload);
 		if (responseCode > 0)
 		{
@@ -136,7 +138,7 @@ void loop()
 
 		String jsonPayload = "{\"temp\":" + String(DHT.temperature) +
 							 ", \"humid\":" + String(DHT.humidity) +
-							 ", \"time\":\"" + timeClient.getEpochTime() + "\"}";
+							 ", \"time\":" + timeClient.getEpochTime() + "}";
 
 		int responseCode = http.POST(jsonPayload);
 		if (responseCode > 0)

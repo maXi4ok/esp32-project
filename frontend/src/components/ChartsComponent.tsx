@@ -7,6 +7,7 @@ import TemperatureChartComponent from "./Charts/TemperatureChartComponent";
 const ChartsComponent = () => {
 	const [data, setData] = useState<IData[]>([]);
 	const [period, setPeriod] = useState<string>("day");
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 
 	useEffect(() => {
 		const fetchData = () => {
@@ -17,17 +18,17 @@ const ChartsComponent = () => {
 	}, [period]);
 
 	return (
-		<div className="mt-2 ml-2 flex w-[85%] flex-col items-start">
-			<p className="font-[Inter] text-[24px] font-extrabold text-[#6d7278] mb-1.5">All Time Charts: </p>
-			<div className="flex h-14 w-[40%] lg:w-[13%] self-center flex-row items-center justify-evenly rounded-2xl bg-[#e5e5e5] p-1">
-				<div className="group relative flex flex-col rounded-sm lg:w-[50%] p-1 hover:bg-[#d6d6d6] hover:top-[75%]">
-					<p className=" self-center font-[Inter] font-extrabold text-[#6d7278]">{period.charAt(0).toUpperCase() + period.slice(1)}</p>
-					<button onClick={() => { setPeriod("day") }} className="hidden font-[Inter] font-extrabold text-[#6d7278] transition duration-500 group-hover:block hover:bg-[#bdbdbd] hover:cursor-pointer">Day</button>
-					<button onClick={() => { setPeriod("week") }} className="hidden font-[Inter] font-extrabold text-[#6d7278] transition duration-500 group-hover:block hover:bg-[#bdbdbd] hover:cursor-pointer">Week</button>
-					<button onClick={() => { setPeriod("month") }} className="hidden font-[Inter] font-extrabold text-[#6d7278] transition duration-500 group-hover:block hover:bg-[#bdbdbd] hover:cursor-pointer">Month</button>
+		<div className="flex flex-col items-start mt-2 ml-2 w-[85%]">
+			<p className="mb-1.5 font-[Inter] font-extrabold text-[#6d7278] text-[24px]">All Time Charts: </p>
+			<div className="flex flex-row justify-evenly items-center self-center bg-[#e5e5e5] p-1 rounded-xl w-[40%] lg:w-[13%] h-14">
+				<div className={`${isOpen ? 'top-[75%]' : ''} relative flex flex-col bg-[#d6d6d6] p-1 rounded-sm lg:w-[65%]`}>
+					<p className={`flex flex-row self-center font-[Inter] font-extrabold text-[#6d7278]`}>{period.charAt(0).toUpperCase() + period.slice(1)} <button onClick={() => { setIsOpen(!isOpen) }}>{isOpen ? (<svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15 13a.997.997 0 01-.707-.293L10 8.414l-4.293 4.293a.999.999 0 11-1.414-1.414l5-5a.999.999 0 011.414 0l5 5A.999.999 0 0115 13z" fill="#737373" /></svg>) : (<svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 14a.997.997 0 01-.707-.293l-5-5a.999.999 0 111.414-1.414L10 11.586l4.293-4.293a.999.999 0 111.414 1.414l-5 5A.997.997 0 0110 14z" fill="#737373" /></svg>)}</button></p>
+					<button onClick={() => { setPeriod("day"); setIsOpen(false) }} className={`${isOpen ? 'block' : 'hidden'} hover:bg-[#bdbdbd] font-[Inter] font-extrabold text-[#6d7278] hover:cursor-pointer`}>Day</button>
+					<button onClick={() => { setPeriod("week"); setIsOpen(false) }} className={`${isOpen ? 'block' : 'hidden'} hover:bg-[#bdbdbd] font-[Inter] font-extrabold text-[#6d7278] hover:cursor-pointer`}>Week</button>
+					<button onClick={() => { setPeriod("month"); setIsOpen(false) }} className={`${isOpen ? 'block' : 'hidden'} hover:bg-[#bdbdbd] font-[Inter] font-extrabold text-[#6d7278] hover:cursor-pointer`}>Month</button>
 				</div>
-				{/* <button className="h-8 w-22 rounded-lg bg-none font-extrabold text-[#6d7278] font-['Inter'] hover:bg-[#d4d4d4] active:bg-[#cbcbcb]">Previous</button>
-				<button className="h-8 w-22 rounded-lg bg-none font-extrabold text-[#6d7278] font-['Inter'] hover:bg-[#d4d4d4] active:bg-[#cbcbcb]">Next</button> */}
+				{/* <button className="hover:bg-[#d4d4d4] active:bg-[#cbcbcb] bg-none rounded-lg w-22 h-8 font-['Inter'] font-extrabold text-[#6d7278]">Previous</button>
+				<button className="hover:bg-[#d4d4d4] active:bg-[#cbcbcb] bg-none rounded-lg w-22 h-8 font-['Inter'] font-extrabold text-[#6d7278]">Next</button> */}
 			</div>
 			<TemperatureChartComponent data={data} />
 			<HumidityChartComponent data={data} />
