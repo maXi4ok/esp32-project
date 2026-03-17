@@ -26,7 +26,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 				}),
 				datasets: [{
 					label: 'Температура',
-					data: data.map(item => item.temp),
+					data: data.map(item => item.temp ? item.temp : item.avgTemp),
 					backgroundColor: "black",
 					borderColor: "orange",
 					borderWidth: 1.5,

@@ -20,7 +20,7 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 				}),
 				datasets: [{
 					label: 'Вологість',
-					data: data.map(item => item.humid),
+					data: data.map(item => item.humid ? item.humid : item.avgHumid),
 					backgroundColor: "lightblue",
 				}],
 			}} options={{
