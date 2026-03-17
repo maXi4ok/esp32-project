@@ -34,8 +34,9 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 							family: "'Inter'"
 						},
 						color: "#6d7278"
-					},
+					}
 				},
+				maintainAspectRatio: true,
 			}} />
 		</div>
 	);

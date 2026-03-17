@@ -42,6 +42,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 						color: "#6d7278"
 					},
 				},
+				maintainAspectRatio: true
 			}} />
 		</div>
 	);

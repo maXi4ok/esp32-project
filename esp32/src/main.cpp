@@ -58,7 +58,7 @@ void setup()
 	display.clearDisplay();
 	display.display();
 
-	WiFi.begin(mySsid, myPassword);
+	WiFi.begin(homeSsid, homePassword);
 
 	while (WiFi.status() != WL_CONNECTED)
 	{
@@ -110,7 +110,7 @@ void loop()
 
 		String jsonPayload = "{\"temp\":" + String(DHT.temperature) +
 							 ", \"humid\":" + String(DHT.humidity) +
-							 ", \"time\":" + (timeClient.getEpochTime() * 1000 - 42600000) + "}";
+							 ", \"time\":\"" + (timeClient.getHours() + 2) + ":" + (timeClient.getMinutes() < 10 ? "0" : "") + String(timeClient.getMinutes()) + "\"}";
 		int responseCode = http.POST(jsonPayload);
 		if (responseCode > 0)
 		{
