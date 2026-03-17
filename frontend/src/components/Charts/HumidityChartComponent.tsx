@@ -19,7 +19,7 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 					return `${hours}:${minutes} | ${day}.${month}`
 				}),
 				datasets: [{
-					label: 'Humidity',
+					label: 'Вологість',
 					data: data.map(item => item.humid),
 					backgroundColor: "lightblue",
 				}],
@@ -27,7 +27,7 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 				plugins: {
 					title: {
 						display: true,
-						text: 'Humidity',
+						text: 'Вологість',
 						font: {
 							size: 24,
 							weight: "bolder",

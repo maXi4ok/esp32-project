@@ -21,7 +21,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 					return `${hours}:${minutes} | ${day}.${month}`
 				}),
 				datasets: [{
-					label: 'Temperature',
+					label: 'Температура',
 					data: data.map(item => item.temp),
 					backgroundColor: "black",
 					borderColor: "orange",
@@ -33,7 +33,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 				plugins: {
 					title: {
 						display: true,
-						text: 'Temperature',
+						text: 'Температура',
 						font: {
 							size: 24,
 							weight: "bolder",
