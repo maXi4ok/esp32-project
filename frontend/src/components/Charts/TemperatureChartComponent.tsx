@@ -13,12 +13,16 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 		<div className="w-full">
 			<Line data={{
 				labels: data.map(item => {
-					const date = new Date(item.time * 1000);
-					const hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
-					const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
-					const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
-					const month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
-					return `${hours}:${minutes} | ${day}.${month}`
+					if (item._id && item._id.day) {
+						return `${item._id.day.toString().padStart(2,"0")}.${item._id.month.toString().padStart(2,"0")}`
+					} else {
+						const date = new Date(item.time * 1000);
+						const hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+						const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+						const day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+						const month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+						return `${hours}:${minutes} | ${day}.${month}`
+					}
 				}),
 				datasets: [{
 					label: 'Температура',
