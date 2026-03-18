@@ -40,7 +40,12 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 						color: "#6d7278"
 					}
 				},
-				maintainAspectRatio: true,
+				scales: {
+					y: {
+						min: 0,
+						max: 100
+					}
+				},
 			}} />
 		</div>
 	);
