@@ -9,7 +9,7 @@ type HumidityChartComponentPropsType = {
 const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) => {
 	return (
 		<div className="w-full">
-			<Bar data={{
+			<Bar height={`${window.innerWidth <= 480 ? '300' : ''}`} data={{
 				labels: data.map(item => {
 					if (item._id && item._id.day) {
 						return `${item._id.day.toString().padStart(2,"0")}.${item._id.month.toString().padStart(2,"0")}`
