@@ -10,7 +10,7 @@ const CurrentDataComponent = () => {
 	}
 	useEffect(() => {
 		fetchCurrentData()
-		setInterval(fetchCurrentData, 60000);
+		setInterval(fetchCurrentData, 600000);
 	}, []);
 	return (
 		<div className="bg-[#e5e5e5] m-5 rounded-[10px] w-[85%] h-42">

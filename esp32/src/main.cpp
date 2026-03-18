@@ -100,7 +100,7 @@ void loop()
 		lastPrintTime = currentMillis;
 	}
 
-	if (currentMillis - lastCurrentPostTime >= 60000)
+	if (currentMillis - lastCurrentPostTime >= 600000)
 	{
 		DHT.read11(dht_pin);
 		HTTPClient http;
