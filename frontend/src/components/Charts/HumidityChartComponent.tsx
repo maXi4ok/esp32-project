@@ -23,7 +23,7 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 					}
 				}),
 				datasets: [{
-					label: 'Вологість',
+					label: 'Humidity',
 					data: data.map(item => item.humid ? item.humid : item.avgHumid),
 					backgroundColor: "lightblue",
 				}],
@@ -31,7 +31,7 @@ const HumidityChartComponent: FC<HumidityChartComponentPropsType> = ({ data }) =
 				plugins: {
 					title: {
 						display: true,
-						text: 'Вологість',
+						text: 'Humidity',
 						font: {
 							size: 24,
 							weight: "bolder",

@@ -25,7 +25,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 					}
 				}),
 				datasets: [{
-					label: 'Температура',
+					label: 'Temperature',
 					data: data.map(item => item.temp ? item.temp : item.avgTemp),
 					backgroundColor: "black",
 					borderColor: "orange",
@@ -37,7 +37,7 @@ const TemperatureChartComponent: FC<TemperatureChartComponentPropsType> = ({ dat
 				plugins: {
 					title: {
 						display: true,
-						text: 'Температура',
+						text: 'Temperature',
 						font: {
 							size: 24,
 							weight: "bolder",
