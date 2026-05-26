@@ -71,8 +71,8 @@ router.post('/', async (req, res) => {
 		humid,
 		time: Number(time),
 	});
-	console.log("new db log: ", newLog);
-	res.status(201).json(newLog);
+	console.log("new db log: ", {temp, humid, time});
+	res.status(201).json({temp, humid, time});
 });
 
 let currentData = null;
