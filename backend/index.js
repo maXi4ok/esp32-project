@@ -9,7 +9,7 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors({
-	origin: ['https://esp32-project-omega.vercel.app/', 'https://esp32-project-maxi4oks-projects.vercel.app']
+	origin: ['https://esp32-project-omega.vercel.app', 'https://esp32-project-maxi4oks-projects.vercel.app']
 }));
 
 app.use(express.json());
